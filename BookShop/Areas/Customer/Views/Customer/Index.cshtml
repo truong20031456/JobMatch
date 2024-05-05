@@ -1,0 +1,17 @@
+﻿@model IEnumerable<JobListingModel>
+
+@{
+    ViewData["Title"] = "JobDetails";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@foreach (var job in Model)
+{
+    <div>
+        <h2>@job.Title</h2>
+        <p>@job.Description</p>
+        <p>Location: @job.Location</p>
+        <a href="@Url.Action("JobDetails", new { id = job.JobListingId })">View Details</a>
+    </div>
+}

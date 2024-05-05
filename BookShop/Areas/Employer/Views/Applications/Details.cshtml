@@ -1,0 +1,47 @@
+﻿@model ApplicationModel
+
+@{
+    ViewData["Title"] = "Details";
+    var status = @Model.status == true ? "Accepted" : "Denied";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ApplicationModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.JobListingId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.JobListingId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            Status
+        </dt>
+        <dd class="col-sm-10">
+            @status
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (Model.status == null)
+    {
+       <a href="/Employer/Applications/Approve/?status=true&id=@Model.ApplicationId">Approve  |</a>
+       <a href = "/Employer/Applications/Approve/?status=false&id=@Model.ApplicationId">  Deny  |</a> 
+    }
+    <a asp-action="Index">Back to List</a>          
+</div>
